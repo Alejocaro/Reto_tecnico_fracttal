@@ -2,8 +2,8 @@ const { defineConfig } = require("cypress");
 require('dotenv').config();
 
 module.exports = defineConfig({
-  viewportWidth: 1366,
-  viewportHeight: 768,
+  viewportWidth: 1920 ,
+  viewportHeight: 1920 ,
   e2e: {
     baseUrl: 'https://one.fracttal.com',
     setupNodeEvents(on, config) {
