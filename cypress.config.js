@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports = defineConfig({
   viewportWidth: 1920 ,
-  viewportHeight: 1920 ,
+  viewportHeight: 1080,
   e2e: {
     baseUrl: 'https://one.fracttal.com',
     setupNodeEvents(on, config) {
