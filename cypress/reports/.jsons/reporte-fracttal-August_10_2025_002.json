@@ -1,0 +1,120 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-08-10T23:27:03.358Z",
+    "end": "2025-08-10T23:30:02.838Z",
+    "duration": 179480,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7c8dc950-a9c3-42c6-b68d-8c7640461843",
+      "title": "",
+      "fullFile": "cypress\\e2e\\createActive\\addTarea.cy.js",
+      "file": "cypress\\e2e\\createActive\\addTarea.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e1790a2e-748b-4bf7-8d66-c30478f9c971",
+          "title": "Successfully add a new task to an asset",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add a new task to an asset",
+              "fullTitle": "Successfully add a new task to an asset should add a new task to an asset",
+              "timedOut": null,
+              "duration": 179136,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "[\n  {\n    \"title\": \"cypress-mochawesome-reporter-videos-failed\",\n    \"value\": \"cypress\\\\e2e\\\\createActive\\\\addTarea.cy.js\"\n  },\n  {\n    \"title\": \"cypress-mochawesome-reporter-screenshots\",\n    \"value\": [\n      [\n        \"\\\\createActive\\\\addTarea.cy.js\\\\Successfully add a new task to an asset -- should add a new task to an asset (failed).png\"\n      ]\n    ]\n  }\n]",
+              "code": "// Cargar el código persistido y colocarlo en localStorage para compatibilidad con el getter existente\ncy.readFile('cypress/fixtures/codigo_activo.json').then(({\n  codigo\n}) => {\n  window.localStorage.setItem('codigo_activo_test', codigo);\n  cy.wrap(codigo).as('codigoActivo');\n});\nloginPage.login(Cypress.env('email'), Cypress.env('password'));\ncy.wait(2000);\ncy.get(_addTarea.addTarea.btn_menu_hamburguesa).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_menu_hamburguesa).click();\ncy.get(_addTarea.addTarea.btn_tareas).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_tareas).click();\ncy.get(_addTarea.addTarea.btn_plan_de_tareas).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_plan_de_tareas).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_agregar_tarea).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_agregar_tarea).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.txt_datos_requeridos).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.descripcion).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.descripcion).eq(0).type('Mantenimiento Preventivo');\ncy.get(_addTarea.addTarea.btn_guardar).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_guardar).click();\ncy.get(_addTarea.addTarea.popup_creacion_exitosa).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.popup_creacion_exitosa).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_add_tarea_).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_add_tarea_).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_add_tarea_2).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_add_tarea_2).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.input_descripcion).eq(8).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.input_descripcion).eq(8).type('Verificar temperatura interna y ajustar termostato si es necesario.');\ncy.get(_addTarea.addTarea.btn_tipo_de_tarea).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_tipo_de_tarea).click();\ncy.get(_addTarea.addTarea.seleccionar_tipo_de_tarea).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.seleccionar_tipo_de_tarea).click();\ncy.get(_addTarea.addTarea.input_tiempo_paro_mtto).eq(14).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.input_tiempo_paro_mtto).eq(14).clear().type('00030');\ncy.get(_addTarea.addTarea.btn_agregar_activador).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_agregar_activador).click();\ncy.get(_addTarea.addTarea.btn_agregar_activador_evento).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_agregar_activador_evento).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_guardar_activador_evento_fecha).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_guardar_activador_evento_fecha).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_guardar_tarea).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_guardar_tarea).click();\ncy.get(_addTarea.addTarea.popup_creacion_exitosa).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.icono_flecha_izquierda).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.icono_flecha_izquierda).click();\n// Validar que la tarea se creó correctamente en la tabla\ncy.get(_addTarea.addTarea.tabla_tareas).should('be.visible');\n// Verificar si la tarea existe sin hacer fallar el test\ncy.get('body').then($body => {\n  const tareaEncontrada = $body.find('*:contains(\"' + nombreTarea + '\")').length > 0;\n  if (tareaEncontrada) {\n    cy.log('✅ Se encontró la tarea: ' + nombreTarea);\n    // Validación adicional de que la fila contiene la descripción de la tarea\n    cy.get(_addTarea.addTarea.validar_tarea_creada(nombreTarea)).should('be.visible').should('contain', nombreTarea);\n  } else {\n    cy.log('❌ No se encontró la tarea: ' + nombreTarea);\n  }\n});\n//activos vinculados\ncy.get(_addTarea.addTarea.btn_activos_viculados).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_activos_viculados).click();\ncy.wait(5000);\ncy.get(_addTarea.addTarea.btn_agregar_activos_viculados).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_agregar_activos_viculados).click();\ncy.wait(8000);\n// Buscar el activo creado previamente usando el código guardado\ncy.get('@codigoActivo').then(codigo => {\n  cy.log('🔍 Buscando activo con código: ' + codigo);\n  cy.log('🔍 Nombre del activo a buscar: ' + nombreActivo);\n  // Hacer clic en el botón de búsqueda y buscar el código del activo\n  cy.get(_addTarea.addTarea.btn_buscar_activos).should('be.visible').click();\n  cy.wait(8000);\n  // Escribir el código del activo en el campo de búsqueda (usar el primero si hay varios)\n  cy.get(_addTarea.addTarea.txt_buscar_activos).first().should('be.visible').type(String(codigo));\n  cy.wait(8000);\n  // Validar si se encontró el activo en la tabla de resultados\n  cy.get('body').then($body => {\n    const activoEncontrado = $body.find('.qa-list-item:contains(\"' + codigo + '\")').length > 0;\n    if (activoEncontrado) {\n      cy.log('✅ Se encontró el activo con código: ' + codigo);\n      // Validación adicional - verificar que está en un elemento de lista\n      cy.get(_addTarea.addTarea.tabla_activos_disponibles).contains(String(codigo)).should('be.visible');\n    } else {\n      cy.log('❌ No se encontró el activo con código: ' + codigo);\n    }\n  });\n});\ncy.get(_addTarea.addTarea.tabla_activos_disponibles).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.tabla_activos_disponibles).click();\ncy.get(_addTarea.addTarea.btn_vincular_activos).should('be.visible').should('exist');\ncy.get(_addTarea.addTarea.btn_vincular_activos).click();\ncy.get(_addTarea.addTarea.popup_creacion_exitosa).should('be.visible').should('exist');\ncy.log('✅ Activo Vinculado exitosamente');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `.qa-list-item`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 60000ms: Expected to find element: `.qa-list-item`, but never found it.\n    at Context.eval (webpack://reto_fracttal/./cypress/e2e/createActive/addTarea.cy.js:113:51)",
+                "diff": null
+              },
+              "uuid": "0488c2b2-5cb6-42ba-a7fc-0aafcfc7d2ee",
+              "parentUUID": "e1790a2e-748b-4bf7-8d66-c30478f9c971",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0488c2b2-5cb6-42ba-a7fc-0aafcfc7d2ee"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 179136,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "reporte-fracttal-[datetime]",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Reporte de Pruebas Fracttal",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "reportFilename": "reporte-fracttal-[datetime]",
+        "timestamp": "longDate",
+        "showPassed": true,
+        "showFailed": true,
+        "showPending": true,
+        "showSkipped": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

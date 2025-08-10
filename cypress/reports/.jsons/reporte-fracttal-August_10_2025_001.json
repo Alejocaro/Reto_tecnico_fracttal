@@ -1,0 +1,116 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-10T23:23:44.695Z",
+    "end": "2025-08-10T23:26:06.011Z",
+    "duration": 141316,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0758116f-9a83-4033-8e70-fb707a28e059",
+      "title": "",
+      "fullFile": "cypress\\e2e\\createActive\\createActive.cy.js",
+      "file": "cypress\\e2e\\createActive\\createActive.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d842c135-2dd2-44a0-8809-da608b2fe753",
+          "title": "Create a new equipment type asset",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should create a new equipment type asset",
+              "fullTitle": "Create a new equipment type asset should create a new equipment type asset",
+              "timedOut": null,
+              "duration": 140842,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-videos-passed\",\n  \"value\": \"cypress\\\\e2e\\\\createActive\\\\createActive.cy.js\"\n}",
+              "code": "// Limpiar el código anterior del localStorage para generar uno nuevo\n_codigoActivo.codigoActivo.limpiarCodigo();\nloginPage.login(Cypress.env('email'), Cypress.env('password'));\ncy.wait(2000);\ncy.get(_createActive.createActive.btn_menu_hamburguesa).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_menu_hamburguesa).click();\ncy.wait(5000);\ncy.get(_createActive.createActive.btn_catalogos).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_catalogos).click();\ncy.wait(5000);\ncy.get(_createActive.createActive.btn_activos).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_activos).click();\ncy.get(_createActive.createActive.btn_todos_los_activos).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_todos_los_activos).click();\ncy.wait(5000);\ncy.get(_createActive.createActive.btn_equipos).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_equipos).click();\ncy.wait(5000);\ncy.get(_createActive.createActive.btn_agregar_equipo).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_agregar_equipo).click();\ncy.wait(5000);\ncy.get(_createActive.createActive.txt_datos_requeridos).should('be.visible').should('exist');\ncy.get(_createActive.createActive.txt_nombre).should('be.visible').should('exist');\ncy.get(_createActive.createActive.txt_nombre).type('REFRIGERADOR DE VACUNAS Equipo QA', {\n  timeout: 10000\n});\n// Usar una constante local y persistirla en un fixture para otros specs\nconst codigo = _codigoActivo.codigoActivo.numero_activo;\ncy.get(_createActive.createActive.txt_codigo).eq(3).should('be.visible').should('exist').type(codigo);\n// Guardar el código para que otros specs lo lean sin depender de localStorage\ncy.writeFile('cypress/fixtures/codigo_activo.json', {\n  codigo\n});\ncy.get(_createActive.createActive.btn_guardar).should('be.visible').should('exist');\ncy.get(_createActive.createActive.btn_guardar).click();\ncy.get(_createActive.createActive.popup_creacion_exitosa).should('be.visible').should('exist');\ncy.get(_createActive.createActive.popup_creacion_exitosa).click();\ncy.get(_createActive.createActive.icono_flecha_izquierda).should('be.visible').should('exist');\ncy.get(_createActive.createActive.icono_flecha_izquierda).click();\ncy.wait(5000);\n// Validación de que el activo se muestra en la tabla\ncy.get(_createActive.createActive.tabla_activos).should('be.visible');\n// Verificar si el activo existe sin hacer fallar el test\ncy.get('body').then($body => {\n  const activoEncontrado = $body.find('*:contains(\"' + _codigoActivo.codigoActivo.numero_activo + '\")').length > 0;\n  if (activoEncontrado) {\n    cy.log('✅ Se encontró el activo con el código: ' + _codigoActivo.codigoActivo.numero_activo);\n    // Validación adicional de que la fila contiene tanto el código como el nombre\n    cy.get(_createActive.createActive.codigo_equipo_visible(_codigoActivo.codigoActivo.numero_activo)).should('be.visible').should('contain', _codigoActivo.codigoActivo.numero_activo).should('contain', 'REFRIGERADOR DE VACUNAS Equipo QA');\n  } else {\n    cy.log('❌ No se encontró el activo con el código: ' + _codigoActivo.codigoActivo.numero_activo);\n  }\n});",
+              "err": {},
+              "uuid": "55277315-b98d-4c66-8f0c-066258cfcb90",
+              "parentUUID": "d842c135-2dd2-44a0-8809-da608b2fe753",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "55277315-b98d-4c66-8f0c-066258cfcb90"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 140842,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "reporte-fracttal-[datetime]",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "charts": true,
+        "reportPageTitle": "Reporte de Pruebas Fracttal",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "reportFilename": "reporte-fracttal-[datetime]",
+        "timestamp": "longDate",
+        "showPassed": true,
+        "showFailed": true,
+        "showPending": true,
+        "showSkipped": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
