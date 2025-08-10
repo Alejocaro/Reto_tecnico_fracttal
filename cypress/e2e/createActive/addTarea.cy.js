@@ -55,7 +55,6 @@ describe('Successfully add a new task to an asset', () => {
         cy.wait(5000)
         cy.get(addTarea.btn_guardar_tarea).should('be.visible').should('exist')
         cy.get(addTarea.btn_guardar_tarea).click()
-        cy.wait(5000)
         cy.get(addTarea.popup_creacion_exitosa).should('be.visible').should('exist')
         cy.get(addTarea.icono_flecha_izquierda).should('be.visible').should('exist')
         cy.get(addTarea.icono_flecha_izquierda).click()
