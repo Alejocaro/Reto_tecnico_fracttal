@@ -11,6 +11,12 @@ describe('Successfully add a new task to an asset', () => {
     const nombreActivo = 'REFRIGERADOR DE VACUNAS Equipo QA'
 
     it('should add a new task to an asset', () => {
+        // Cargar el código persistido y colocarlo en localStorage para compatibilidad con el getter existente
+        cy.readFile('cypress/fixtures/codigo_activo.json').then(({ codigo }) => {
+            window.localStorage.setItem('codigo_activo_test', codigo)
+            cy.wrap(codigo).as('codigoActivo')
+        })
+
         loginPage.login(Cypress.env('email'), Cypress.env('password'))
         cy.wait(2000)
         cy.get(addTarea.btn_menu_hamburguesa).should('be.visible').should('exist')
@@ -82,25 +88,27 @@ describe('Successfully add a new task to an asset', () => {
         cy.get(addTarea.btn_agregar_activos_viculados).should('be.visible').should('exist')
         cy.get(addTarea.btn_agregar_activos_viculados).click()
         cy.wait(8000)
-        // Buscar el activo creado previamente usando el código guardado en localStorage
-        cy.log('🔍 Buscando activo con código: ' + codigoActivo.numero_activo)
-        cy.log('🔍 Nombre del activo a buscar: ' + nombreActivo)
-        // Hacer clic en el botón de búsqueda y buscar el código del activo
-        cy.get(addTarea.btn_buscar_activos).should('be.visible').click()
-        cy.wait(8000)
-        // Escribir el código del activo en el campo de búsqueda (usar el primero si hay varios)
-        cy.get(addTarea.txt_buscar_activos).first().should('be.visible').type(codigoActivo.numero_activo)
-        cy.wait(8000)
-        // Validar si se encontró el activo en la tabla de resultados
-        cy.get('body').then($body => {
-            const activoEncontrado = $body.find('.qa-list-item:contains("' + codigoActivo.numero_activo + '")').length > 0
-            if (activoEncontrado) {
-                cy.log('✅ Se encontró el activo con código: ' + codigoActivo.numero_activo)
-                // Validación adicional - verificar que está en un elemento de lista
-                cy.get(addTarea.tabla_activos_disponibles).contains(codigoActivo.numero_activo).should('be.visible')
-            } else {
-                cy.log('❌ No se encontró el activo con código: ' + codigoActivo.numero_activo)
-            }
+        // Buscar el activo creado previamente usando el código guardado
+        cy.get('@codigoActivo').then((codigo) => {
+            cy.log('🔍 Buscando activo con código: ' + codigo)
+            cy.log('🔍 Nombre del activo a buscar: ' + nombreActivo)
+            // Hacer clic en el botón de búsqueda y buscar el código del activo
+            cy.get(addTarea.btn_buscar_activos).should('be.visible').click()
+            cy.wait(8000)
+            // Escribir el código del activo en el campo de búsqueda (usar el primero si hay varios)
+            cy.get(addTarea.txt_buscar_activos).first().should('be.visible').type(String(codigo))
+            cy.wait(8000)
+            // Validar si se encontró el activo en la tabla de resultados
+            cy.get('body').then($body => {
+                const activoEncontrado = $body.find('.qa-list-item:contains("' + codigo + '")').length > 0
+                if (activoEncontrado) {
+                    cy.log('✅ Se encontró el activo con código: ' + codigo)
+                    // Validación adicional - verificar que está en un elemento de lista
+                    cy.get(addTarea.tabla_activos_disponibles).contains(String(codigo)).should('be.visible')
+                } else {
+                    cy.log('❌ No se encontró el activo con código: ' + codigo)
+                }
+            })
         })
         cy.get(addTarea.tabla_activos_disponibles).should('be.visible').should('exist')
         cy.get(addTarea.tabla_activos_disponibles).click()

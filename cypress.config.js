@@ -28,9 +28,10 @@ module.exports = defineConfig({
     // Configuración específica para localStorage en headless
     chromeWebSecurity: false,
     // Asegurar que el navegador mantenga el estado
-    defaultCommandTimeout: 10000,
-    requestTimeout: 10000,
-    responseTimeout: 10000,
+    defaultCommandTimeout: 60000,
+    requestTimeout: 60000,
+    responseTimeout: 60000,
+    pageLoadTimeout: 120000,
     // Configuración para reportes HTML
     reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {

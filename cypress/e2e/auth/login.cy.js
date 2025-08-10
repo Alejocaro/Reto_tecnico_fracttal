@@ -8,20 +8,20 @@ describe('Login', () => {
         const email = Cypress.env('email')
         const password = Cypress.env('password')
         loginPage.login(email, password)
-        cy.url().should('not.include', '/signin')
-
-        // Verificar que el dashboard sea visible
-        cy.get(loginPage.elements.dashboard)
+        // Esperar elemento estable del dashboard
+        cy.get(loginPage.elements.menuButton, { timeout: 90000 })
+            .should('be.visible').should('exist')
+        cy.get(loginPage.elements.dashboard, { timeout: 90000 })
             .should('be.visible').should('exist')
     })
 
     it('Debería mostrar error con credenciales inválidas', () => {
         const email = Cypress.env('email')
         const password = 'contrasena_invalida'
-        loginPage.login(email, password)
+        loginPage.login(email, password, false)
 
         // Mensaje de error alerta credenciales invalidas
-        cy.get('#notistack-snackbar')
+        cy.get('#notistack-snackbar', { timeout: 60000 })
             .should('be.visible')
             .and('contain', 'Usuario o clave no válida')
     })

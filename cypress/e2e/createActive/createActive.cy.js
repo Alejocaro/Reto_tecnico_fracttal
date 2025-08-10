@@ -33,7 +33,11 @@ describe('Create a new equipment type asset', () => {
         cy.get(createActive.txt_datos_requeridos).should('be.visible').should('exist')
         cy.get(createActive.txt_nombre).should('be.visible').should('exist')    
         cy.get(createActive.txt_nombre).type('REFRIGERADOR DE VACUNAS Equipo QA', {timeout: 10000})
-        cy.get(createActive.txt_codigo).eq(3).should('be.visible').should('exist').type(codigoActivo.numero_activo)
+        // Usar una constante local y persistirla en un fixture para otros specs
+        const codigo = codigoActivo.numero_activo
+        cy.get(createActive.txt_codigo).eq(3).should('be.visible').should('exist').type(codigo)
+        // Guardar el código para que otros specs lo lean sin depender de localStorage
+        cy.writeFile('cypress/fixtures/codigo_activo.json', { codigo })
         cy.get(createActive.btn_guardar).should('be.visible').should('exist')
         cy.get(createActive.btn_guardar).click()
         cy.get(createActive.popup_creacion_exitosa).should('be.visible').should('exist')

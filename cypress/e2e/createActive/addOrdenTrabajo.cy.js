@@ -1,15 +1,20 @@
 import { addOT } from '../../support/selectors/addOT'
 import LoginPage from '../pages/loginPage'
 import { addTarea } from '../../support/selectors/addTarea'
-import { codigoActivo } from '../../support/utils/codigoActivo'
+// import { codigoActivo } from '../../support/utils/codigoActivo' // ya no se usa
 
 describe('Successfully add a new order of work', () => {
     const loginPage = new LoginPage()
     Cypress.on('uncaught:exception', (err) => {
         return !err.message.includes('Cannot read properties of undefined (reading \'element\')')
     }) 
-    const codigoActivoId = codigoActivo.numero_activo
+
     it('should add a new order of work', () => {
+        // Leer el fixture y preparar alias para el código del activo
+        cy.readFile('cypress/fixtures/codigo_activo.json').then(({ codigo }) => {
+            cy.wrap(String(codigo)).as('codigoActivo')
+        })
+
         loginPage.login(Cypress.env('email'), Cypress.env('password'))
         cy.wait(5000)
         cy.get(addOT.btn_menu_hamburguesa).should('be.visible').should('exist')
@@ -19,11 +24,21 @@ describe('Successfully add a new order of work', () => {
         cy.get(addOT.btn_orden_trabajo).should('be.visible').should('exist')
         cy.get(addOT.btn_orden_trabajo).click()
         cy.wait(5000)
+
+        // Setear localStorage en el contexto de la app (tras el login/visit)
+        cy.window().then((w) => {
+            cy.get('@codigoActivo').then((codigo) => {
+                w.localStorage.setItem('codigo_activo_test', codigo)
+            })
+        })
+
         cy.get(addOT.txt_tablero_kanban).should('be.visible').should('exist')
         cy.get(addOT.contenedor_tarjetas_kanban).should('be.visible').should('exist')
         // Encontrar el divisor que contiene el ID del activo y hacer click en su checkbox
-        cy.get('.MuiListItem-root').contains('{ ' + codigoActivoId + ' }').parent().parent().within(() => {
-            cy.get('input.PrivateSwitchBase-input.css-1m9pwf3[type="checkbox"][data-indeterminate="false"]').click()
+        cy.get('@codigoActivo').then((codigo) => {
+            cy.get('.MuiListItem-root').contains('{ ' + codigo + ' }').parent().parent().within(() => {
+                cy.get('input.PrivateSwitchBase-input.css-1m9pwf3[type="checkbox"][data-indeterminate="false"]').click()
+            })
         })
         cy.get(addOT.btn_nueva_ot).should('be.visible').should('exist')
         cy.get(addOT.btn_nueva_ot).click()
