@@ -108,8 +108,8 @@ cd Reto_fracttal
 npm install
 
 # (Opcional) Crear archivo .env con tus credenciales
-echo "email=testersqa2@gmail.com" > .env
-echo "password=TesterFracttal2025.*" >> .env
+echo "proporcionadas por fracttal" > .env
+echo "proporcionadas por fracttal*" >> .env
 
 # Verificar que Cypress está listo
 npx cypress verify
