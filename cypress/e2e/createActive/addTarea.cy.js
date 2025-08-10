@@ -81,17 +81,16 @@ describe('Successfully add a new task to an asset', () => {
         cy.wait(5000)
         cy.get(addTarea.btn_agregar_activos_viculados).should('be.visible').should('exist')
         cy.get(addTarea.btn_agregar_activos_viculados).click()
-        cy.wait(5000)
-        
+        cy.wait(8000)
         // Buscar el activo creado previamente usando el código guardado en localStorage
         cy.log('🔍 Buscando activo con código: ' + codigoActivo.numero_activo)
         cy.log('🔍 Nombre del activo a buscar: ' + nombreActivo)
         // Hacer clic en el botón de búsqueda y buscar el código del activo
         cy.get(addTarea.btn_buscar_activos).should('be.visible').click()
-        cy.wait(1000)
+        cy.wait(8000)
         // Escribir el código del activo en el campo de búsqueda (usar el primero si hay varios)
         cy.get(addTarea.txt_buscar_activos).first().should('be.visible').type(codigoActivo.numero_activo)
-        cy.wait(5000)
+        cy.wait(8000)
         // Validar si se encontró el activo en la tabla de resultados
         cy.get('body').then($body => {
             const activoEncontrado = $body.find('.qa-list-item:contains("' + codigoActivo.numero_activo + '")').length > 0

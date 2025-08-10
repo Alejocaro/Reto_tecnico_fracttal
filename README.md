@@ -84,6 +84,11 @@ Reto_fracttal/
 | Cypress | ^14.5.4 | Framework de testing E2E |
 | Node.js | >=16.x | Entorno de ejecución JS |
 | dotenv | ^17.2.1 | Variables de entorno |
+| cypress-mochawesome-reporter | ^3.8.2 | Generación de reportes HTML |
+| mochawesome | ^7.1.3 | Reporter base para Mocha |
+| mochawesome-merge | ^4.3.0 | Consolidación de reportes |
+| mochawesome-report-generator | ^6.2.0 | Generador de reportes finales |
+| rimraf | ^6.0.1 | Limpieza de archivos |
 | JavaScript ES6+ | - | Lenguaje principal |
 
 ---
@@ -295,9 +300,44 @@ npm run cypress:run
 
 ## 📊 Reportes y resultados
 
+### 📈 Reportes HTML Automatizados
+
+El proyecto ahora incluye reportes HTML detallados con **Mochawesome** que incluyen:
+
+- 📊 **Dashboards interactivos** con gráficos y estadísticas
+- 🎥 **Videos** de cada prueba ejecutada
+- 📸 **Screenshots** automáticos en fallos y pasos importantes
+- 📋 **Detalles completos** de cada test con tiempos de ejecución
+- 📱 **Diseño responsive** para ver reportes en cualquier dispositivo
+
+### 🚀 Comandos para generar reportes:
+
+```bash
+# Ejecutar pruebas con reporte HTML
+npm run test:report
+
+# Ejecutar en modo headed (ver navegador) con reportes
+npm run test:report:headed
+
+# Generar reporte completo consolidado
+npm run test:full
+
+# Limpiar reportes anteriores
+npm run clean:reports
+```
+
+### 📁 Ubicación de reportes:
+
+- **📊 Reportes HTML:** `cypress/reports/`
+- **🎥 Videos:** `cypress/reports/videos/`
+- **📸 Screenshots:** `cypress/reports/screenshots/`
+
+### 📋 Información adicional:
+
 - 🎥 Cypress genera videos y capturas si hay fallos
 - 📝 En consola se ven logs claros con el estado de cada paso
 - ✅ Todos los tests deben pasar para considerarlo exitoso
+- 📊 Los reportes HTML se generan automáticamente después de cada ejecución
 
 ---
 

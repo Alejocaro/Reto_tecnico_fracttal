@@ -9,6 +9,7 @@ cypress/videos/
 cypress/screenshots/
 cypress/downloads/
 cypress/fixtures/
+cypress/reports/
 
 # IDE
 .vscode/
