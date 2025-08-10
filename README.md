@@ -1,47 +1,61 @@
-🏭 Proyecto de Automatización E2E - Fracttal
-📋 Contenidos
-Introducción
--Contexto de Negocio
--Objetivo
--Estructura del Proyecto
--Tecnologías
--Configuración
--Instalación
--Casos de Prueba
--Flujo de Ejecución
--Criterios de Aceptación
--Arquitectura de Pruebas
--Selectores y Page Objects
--Ejecución
--Reportes
--Resolución de Problemas
--Buenas Prácticas
--Autor
+# 🏭 Proyecto de Automatización E2E - Fracttal
 
-🌟 Introducción
+---
+
+## 📋 Tabla de Contenidos
+
+- [🌟 Introducción](#-introducción)
+- [🏢 Contexto de Negocio](#-contexto)
+- [🎯 Objetivo](#-objetivo)
+- [📁 Estructura del Proyecto](#-cómo-está-organizado-el-proyecto)
+- [💻 Tecnologías](#-tecnologías-usadas)
+- [⚙️ Configuración](#%EF%B8%8F-configuración-rápida)
+- [🔧 Instalación](#-instalación-paso-a-paso)
+- [🧪 Casos de Prueba](#-qué-pruebas-corremos)
+- [🚀 Flujo de Ejecución](#-cómo-correr-las-pruebas)
+- [📝 Criterios de Aceptación](#-criterios-de-aceptación-gherkin)
+- [🏗️ Arquitectura de Pruebas](#%EF%B8%8F-cómo-está-construido-el-código)
+- [📊 Reportes](#-reportes-y-resultados)
+- [🔮 Resolución de Problemas](#-qué-sigue)
+- [👨‍💻 Autor](#-sobre-mí)
+
+---
+
+## 🌟 Introducción
+
 Fracttal es una plataforma potente para la gestión de activos y mantenimiento, y este proyecto busca automatizar con Cypress el flujo completo de mantenimiento preventivo. La idea es que, a medida que se añaden nuevas funciones, el core de mantenimiento siga funcionando sin problemas.
 
 Aquí vamos a validar desde la creación de activos hasta cerrar órdenes de trabajo, cubriendo todo el ciclo.
 
-🏢 Contexto
+---
+
+## 🏢 Contexto
+
 Este proyecto simula un escenario típico en Fracttal donde:  
-Se crea un activo nuevo (un refrigerador de vacunas para pruebas).
-Se asocia una tarea de mantenimiento a ese activo.
-Se ejecuta una orden de trabajo basada en esa tarea.
-Se sigue el ciclo completo de gestión de la orden.
+
+- ✅ Se crea un activo nuevo (un refrigerador de vacunas para pruebas)
+- ✅ Se asocia una tarea de mantenimiento a ese activo
+- ✅ Se ejecuta una orden de trabajo basada en esa tarea
+- ✅ Se sigue el ciclo completo de gestión de la orden
+
 Esto asegura que los procesos clave funcionen bien.
 
-🎯 Objetivo
-El reto es demostrar habilidades para:
-Documentar criterios claros para cada prueba.
-Resolver errores que puedan surgir durante la automatización.
-Utilizar herramientas modernas, incluso IA, para hacer el flujo más eficiente.
-Generar reportes que den evidencia clara de los resultados.
+---
 
-📁 Cómo está organizado el proyecto
-bash
-Copiar
-Editar
+## 🎯 Objetivo
+
+El reto es demostrar habilidades para:
+
+- 📋 Documentar criterios claros para cada prueba
+- 🔧 Resolver errores que puedan surgir durante la automatización
+- 🤖 Utilizar herramientas modernas, incluso IA, para hacer el flujo más eficiente
+- 📊 Generar reportes que den evidencia clara de los resultados
+
+---
+
+## 📁 Cómo está organizado el proyecto
+
+```
 Reto_fracttal/
 ├── cypress/
 │   ├── downloads/              
@@ -59,51 +73,71 @@ Reto_fracttal/
 ├── cypress.config.js           
 ├── package.json                
 ├── README.md                   
+```
 
+---
 
-💻 Tecnologías usadas
-Tecnología	Versión	Para qué sirve
-Cypress	^14.5.4	Framework de testing E2E
-Node.js	>=16.x	Entorno de ejecución JS
-dotenv	^17.2.1	Variables de entorno
-JavaScript ES6+	-	Lenguaje principal
+## 💻 Tecnologías usadas
 
+| Tecnología | Versión | Para qué sirve |
+|------------|---------|----------------|
+| Cypress | ^14.5.4 | Framework de testing E2E |
+| Node.js | >=16.x | Entorno de ejecución JS |
+| dotenv | ^17.2.1 | Variables de entorno |
+| JavaScript ES6+ | - | Lenguaje principal |
 
-⚙️ Configuración rápida
-Base URL apuntando a https://one.fracttal.com
-Variables de entorno para el usuario y contraseña (se pueden configurar en .env)
-Especificación de tests que se van a correr
-Resolución estándar de 1920x1080
+---
 
+## ⚙️ Configuración rápida
 
-🔧 Instalación paso a paso
-bash
+- 🌐 Base URL apuntando a https://one.fracttal.com
+- 🔐 Variables de entorno para el usuario y contraseña (se pueden configurar en .env)
+- 🧪 Especificación de tests que se van a correr
+- 🖥️ Resolución estándar de 1920x1080
+
+---
+
+## 🔧 Instalación paso a paso
+
+```bash
 # Clonar el repo
 git clone <URL_DEL_REPOSITORIO>
 cd Reto_fracttal
+
 # Instalar dependencias
 npm install
+
 # (Opcional) Crear archivo .env con tus credenciales
 echo "email=testersqa2@gmail.com" > .env
 echo "password=TesterFracttal2025.*" >> .env
+
 # Verificar que Cypress está listo
 npx cypress verify
+```
 
+---
 
-🧪 Qué pruebas corremos
-1. Login
+## 🧪 Qué pruebas corremos
+
+### 1. 🔐 Login
 Validamos que el login funcione bien con credenciales válidas y que muestre error con credenciales incorrectas.
-2. Creación de activo
+
+### 2. 🏭 Creación de activo
 Creamos un equipo llamado "REFRIGERADOR DE VACUNAS Equipo QA" con un código único.
-3. Gestión de tareas
+
+### 3. 📋 Gestión de tareas
 Creamos un plan y tareas de mantenimiento, configuramos el tiempo de paro, activadores y vinculamos el activo.
-4. Órdenes de trabajo
+
+### 4. 🔄 Órdenes de trabajo
 Generamos la orden desde la tarea, la asignamos, la revisamos, la firmamos y la finalizamos, validando cada paso.
 
+---
 
-📝 Criterios de Aceptación (Gherkin)
-🔐 Feature: Autenticación
-Gerkin
+## 📝 Criterios de Aceptación (Gherkin)
+
+### 🔐 Feature: Autenticación
+
+```gherkin
 Feature: Autenticación en Fracttal
   Como usuario del sistema Fracttal
   Quiero poder autenticarme correctamente
@@ -123,10 +157,11 @@ Feature: Autenticación en Fracttal
     And ingreso una contraseña incorrecta
     And hago clic en el botón "Siguiente"
     Then debería ver el mensaje "Usuario o clave no válida"
+```
 
+### 🏭 Feature: Gestión de Activos
 
-🏭 Feature: Gestión de Activos
-gherkin
+```gherkin
 Feature: Creación de Activos
   Como usuario del sistema
   Quiero crear un nuevo activo tipo equipo
@@ -142,11 +177,11 @@ Feature: Creación de Activos
     And hago clic en "Guardar"
     Then debería ver el mensaje "Proceso Realizado"
     And el activo debería aparecer en la tabla de equipos
+```
 
+### 📋 Feature: Gestión de Tareas
 
-📋 Feature: Gestión de Tareas
-
-gherkin
+```gherkin
 Feature: Creación de Tareas de Mantenimiento
   Como usuario del sistema
   Quiero crear una tarea de mantenimiento preventivo
@@ -184,10 +219,11 @@ Feature: Creación de Tareas de Mantenimiento
     And hago clic en "Vincular Activos e Iniciar tareas"
     Then debería ver el mensaje "Proceso Realizado"
     And el activo debería estar vinculado a la tarea
+```
 
+### 🔄 Feature: Gestión de Órdenes de Trabajo
 
-🔄 Feature: Gestión de Órdenes de Trabajo
-gherkin
+```gherkin
 Feature: Gestión completa de Órdenes de Trabajo
   Como usuario del sistema
   Quiero gestionar el ciclo completo de una orden de trabajo
@@ -233,36 +269,57 @@ Feature: Gestión completa de Órdenes de Trabajo
     And selecciono "Historial de la OT"
     Then debería ver el histórico completo
     And debería ver el estado "(Finalizadas)" en el timeline
+```
 
-🏗️ Cómo está construido el código
-Usamos Page Object Model para mantener el código limpio y fácil de mantener. Los selectores están organizados por funcionalidad y tenemos utilidades para cosas como generar códigos únicos.
+---
 
-🚀 Cómo correr las pruebas
-Modo interactivo para desarrollo:
+## 🏗️ Cómo está construido el código
 
-bash
+Usamos **Page Object Model** para mantener el código limpio y fácil de mantener. Los selectores están organizados por funcionalidad y tenemos utilidades para cosas como generar códigos únicos.
+
+---
+
+## 🚀 Cómo correr las pruebas
+
+### Modo interactivo para desarrollo:
+```bash
 npm run cypress:open
-Modo headless para integración continua o ejecución rápida:
-bash
+```
+
+### Modo headless para integración continua o ejecución rápida:
+```bash
 npm run cypress:run
+```
 
-📊 Reportes y resultados
-Cypress genera videos y capturas si hay fallos.
-En consola se ven logs claros con el estado de cada paso.
-Todos los tests deben pasar para considerarlo exitoso.
+---
 
-🔮 Qué sigue
-Integrar con CI/CD (GitHub Actions).
-Dashboard con métricas de pruebas y rendimiento.
-Más pruebas: API, performance, accesibilidad.
+## 📊 Reportes y resultados
 
-👨‍💻 Sobre mí
-Soy Alejandro Caro, Automation QA Engineer. Puedes contactarme en:
-Email: alejandrocaro255437@correo.itm.edu.co
-LinkedIn: https://www.linkedin.com/in/alejandrocarogomez/
-GitHub: https://github.com/Alejocaro
+- 🎥 Cypress genera videos y capturas si hay fallos
+- 📝 En consola se ven logs claros con el estado de cada paso
+- ✅ Todos los tests deben pasar para considerarlo exitoso
 
+---
 
-📄 Licencia
-Licencia ISC.
+## 🔮 Qué sigue
+
+- 🔄 Integrar con CI/CD (GitHub Actions)
+- 📈 Dashboard con métricas de pruebas y rendimiento
+- 🧪 Más pruebas: API, performance, accesibilidad
+
+---
+
+## 👨‍💻 Sobre mí
+
+**Alejandro Caro** - Automation QA Engineer
+
+📧 **Email:** alejandrocaro255437@correo.itm.edu.co  
+💼 **LinkedIn:** https://www.linkedin.com/in/alejandrocarogomez/  
+🐙 **GitHub:** https://github.com/Alejocaro
+
+---
+
+## 📄 Licencia
+
+**Licencia ISC**  
 © 2025 - Proyecto de Automatización E2E para Fracttal
