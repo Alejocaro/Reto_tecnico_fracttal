@@ -339,6 +339,21 @@ npm run clean:reports
 - ✅ Todos los tests deben pasar para considerarlo exitoso
 - 📊 Los reportes HTML se generan automáticamente después de cada ejecución
 
+### 🤖 Nota: Uso de Cursor (IA) en el desarrollo
+
+Para transparencia, durante el desarrollo se utilizó el editor Cursor con asistencia de IA para:
+- Autocompletado y aceleración en la escritura de pruebas y Page Objects
+- Implementación y manejo de `localStorage` en los flujos de autenticación (p. ej., preservar sesión/token entre tests)
+- Sugerencias de refactorización y organización de `selectors`, `commands` y utilidades
+- Apoyo en configuración de reportes y scripts de `npm`
+- Se utilo para implementacion de manejo de errores en cypress
+- // Leer el fixture y preparar alias para el código del activo
+        cy.readFile('cypress/fixtures/codigo_activo.json').then(({ codigo }) => {
+            cy.wrap(String(codigo)).as('codigoActivo')
+        })
+- Además, se empleó para realizar la refactorización del código y mejorar su calidad, siguiendo principios de código    limpio. 
+- Se utilizo para la contruccion del mismo documento README.md
+
 ---
 
 ## 🔮 Qué sigue
