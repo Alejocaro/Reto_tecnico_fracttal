@@ -18,6 +18,7 @@ module.exports = defineConfig({
       "cypress/e2e/auth/Login.cy.js",
       "cypress/e2e/createActive/createActive.cy.js",
       "cypress/e2e/createActive/addTarea.cy.js",
+      "cypress/e2e/createActive/addOrdenTrabajo.cy.js",
     ],
     testIsolation: false,
     experimentalSessionAndOrigin: true,
